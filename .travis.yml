@@ -1,0 +1,18 @@
+language: python
+python:
+  - "2.6"
+  - "2.7"
+  - "3.5"
+  - "3.6"
+  - "3.7"
+script:
+  -  test "$(./operation.py)" = "Usage: operation <operator> [var1 [var2 [var3...]]]"
+  -  test "$(./operation.py xxx 1 2)" = "Unknown operator: xxx"
+  -  test "$(./operation.py + 1 2 3)" = "Number of variables for operator + is: 2"
+  -  test "$(./operation.py - 1 2 3)" = "Number of variables for operator - is: 2"
+  -  test "$(./operation.py \* 1 2 3)" = "Number of variables for operator * is: 2"
+  -  test "$(./operation.py / 1 2 3)" = "Number of variables for operator / is: 2"
+  -  test "$(./operation.py + 1 2)" = "3.0"
+  -  test "$(./operation.py - 3 1)" = "1.0"
+  -  test "$(./operation.py \* 2 3)" = "6.0"
+  -  test "$(./operation.py / 6 2)" = "3.0"
